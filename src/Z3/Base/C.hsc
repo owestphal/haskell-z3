@@ -1,4 +1,5 @@
 {-# LANGUAGE EmptyDataDecls #-}
+{-# LANGUAGE InterruptibleFFI #-}
 
 -- |
 -- Module    : Z3.Base.C
@@ -2850,7 +2851,7 @@ foreign import ccall unsafe "Z3_optimize_pop"
                     -> Ptr Z3_optimize
                     -> IO ()
 
-foreign import ccall unsafe "Z3_optimize_check"
+foreign import ccall interruptible "Z3_optimize_check"
     z3_optimize_check :: Ptr Z3_context
                       -> Ptr Z3_optimize
                       -> CUInt
